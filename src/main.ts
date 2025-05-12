@@ -16,11 +16,4 @@ app.use(createPinia())
 app.use(router)
 app.use(Antd)
 
-
-import { defineCustomElements } from '@ionic/core/loader'
-// 引入 Ionicons 的 CSS
-import '@ionic/core/css/ionic.bundle.css'
-// 注册 Ionicons Web 组件
-defineCustomElements(window)
-
 app.mount('#app')

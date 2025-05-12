@@ -42,8 +42,6 @@ import theme from '@/components/common/theme.vue'
     padding: 0 1rem;
   }
   .layout-bottom{
-    background: #000;
-    color: #fff;
     flex-grow: 1;
     display: flex;
     flex-direction: row;
@@ -53,7 +51,7 @@ import theme from '@/components/common/theme.vue'
     .bottom-right{
       background: red;
       flex: 1;
-      border-radius: 16px;
+      border-top-left-radius: 12px;
     }
   }
 }
