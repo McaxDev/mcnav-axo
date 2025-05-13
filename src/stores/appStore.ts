@@ -26,7 +26,9 @@ export const useAppConfigStore = defineStore('appConfig', () => {
         "colorError": "#ff4d4f",
         "colorInfo": "#28abce",
         "borderRadius": 16,
-        "borderRadiusXS": 24
+        "borderRadiusXS": 24,
+        "borderRadiusSM": 16,
+        "borderRadiusLG": 20
       },
       algorithm: isDarkMode.value?theme.darkAlgorithm:theme.defaultAlgorithm,
     }

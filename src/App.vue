@@ -73,7 +73,7 @@ import Load from '@/components/loadingPage.vue'
   
   <a-config-provider v-show="!isLoading" :theme="themex" :locale="locale" mode="out-in">
     <router-view v-slot="{ Component }">
-      <transition name="fade" :style="{color:appConfig.themecss.colorTextBase,background:appConfig.themecss.colorBgBase}">
+      <transition name="fade" :style="{color:appConfig.themecss.colorTextBase,background:appConfig.themecss.colorBgBase,fontSize:`${appConfig.themecss.fontSize}px`}">
         <component :is="Component" />
       </transition>
     </router-view>

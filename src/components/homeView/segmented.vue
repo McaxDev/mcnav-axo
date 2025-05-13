@@ -56,6 +56,10 @@ function changeActive(item:String){
 }
 .segmentd-container{
   padding: 0.5rem 0.8rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
   &:hover{
     cursor: pointer;
     background-color: var(--hover-bg);

@@ -9,7 +9,7 @@ const appConfig = useAppConfigStore()
 const options = reactive(['全部', 'Weekly', 'Monthly', 'Quarterly', 'Yearly'])
 const value = ref(options[0])
 
-const optionsNav = reactive(['主页', '关于'])
+const optionsNav = reactive(['主页', '服务器', '关于'])
 const valueNav = ref(optionsNav[0])
 
 
@@ -22,8 +22,8 @@ import segmented from '@/components/homeView/segmented.vue'
       <!-- 上部分 -->
       <div class="layout-top">
         <div style="display: flex;flex-direction: row;gap: 1.2rem;align-items: center;">
-          <div style="font-weight: bold;letter-spacing: 1px;width: calc(160px - 16px - 1.2rem);">
-            MCnav | Axo
+          <div style="font-weight: bold;letter-spacing: 1px;width: calc(160px - 16px - 1.2rem);font-size: 1.2rem;">
+            Axo | MCnav
           </div>
           <div>
             <segmented v-model="valueNav" :options="optionsNav"/>
