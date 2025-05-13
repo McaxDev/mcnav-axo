@@ -3,7 +3,7 @@ import { ref } from 'vue'
 const icons = [
     'sunny',
     'moon',
-    'contrast'
+    // 'contrast'
 ]
 // 主题图标
 
@@ -16,6 +16,27 @@ import { theme } from 'ant-design-vue'
 
 function changeThemeMode(icon: string) {
     console.log(appConfig.activeTheme,icon)
+    // switch (icon) {
+    //     case 'sunny':
+    //         console.log('变dark')
+    //         appConfig.setActiveTheme('moon')
+    //         appConfig.changeTheme({algorithm: theme.defaultAlgorithm})
+    //         break
+    //     case 'moon':
+    //         console.log('变auto')
+    //         console.log(appConfig.isDarkMode)
+    //         appConfig.setActiveTheme('contrast')
+    //         appConfig.changeTheme({algorithm: appConfig.isDarkMode?theme.defaultAlgorithm:theme.darkAlgorithm})
+    //         break
+    //     case 'contrast':
+    //         console.log('变light')
+    //         appConfig.setActiveTheme('sunny')
+    //         appConfig.changeTheme({algorithm: theme.darkAlgorithm})
+    //         break
+    //     default:
+    //         console.log('contrast')
+    // }
+
     switch (icon) {
         case 'sunny':
             console.log('变dark')
@@ -24,12 +45,7 @@ function changeThemeMode(icon: string) {
             break
         case 'moon':
             console.log('变auto')
-            console.log(appConfig.isDarkMode)
-            appConfig.setActiveTheme('contrast')
-            appConfig.changeTheme({algorithm: appConfig.isDarkMode?theme.defaultAlgorithm:theme.darkAlgorithm})
-            break
-        case 'contrast':
-            console.log('变light')
+            // console.log(appConfig.isDarkMode)
             appConfig.setActiveTheme('sunny')
             appConfig.changeTheme({algorithm: theme.darkAlgorithm})
             break
@@ -59,9 +75,11 @@ console.log(appConfig.themecss)
 
 <style scoped>
 ion-icon {
-  font-size: 1.5rem;
+    font-size: 1.5rem;
 }
 .icon-display{
+    width: 24px;
+    height: 24px;
     &:hover{
         cursor: pointer;
     }

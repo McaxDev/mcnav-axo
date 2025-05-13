@@ -9,10 +9,9 @@ export const useAppConfigStore = defineStore('appConfig', () => {
   function setIsDarkMode(isdark:boolean){
     console.log(isdark)
     isDarkMode.value = isdark
-    console.log(isDarkMode.value)
   }
 
-  const activeTheme = ref('contrast')
+  const activeTheme = ref('sunny')
   function setActiveTheme(active:string){
     activeTheme.value = active
   }
@@ -20,21 +19,27 @@ export const useAppConfigStore = defineStore('appConfig', () => {
 
   const themex = reactive(
     {
-      token: {
-        colorPrimary: '#28abce',
-        borderRadius: 10,
+      "token": {
+        "colorPrimary": "#28abce",
+        "colorSuccess": "#52c41a",
+        "colorWarning": "#faad14",
+        "colorError": "#ff4d4f",
+        "colorInfo": "#28abce",
+        "borderRadius": 16,
+        "borderRadiusXS": 24
       },
       algorithm: isDarkMode.value?theme.darkAlgorithm:theme.defaultAlgorithm,
     }
   )
   function changeTheme(config:object){
-    console.log('改变主题~！')
     Object.assign(themex, config)
+    console.log('改变主题~！',themex)
   }
 
   const themecss = reactive({})
   function changeThemeCss(css:object){
     Object.assign(themecss, css)
+    console.log('改变主题css~！',themecss)
   }
   const locale = ref(zhCN)
 

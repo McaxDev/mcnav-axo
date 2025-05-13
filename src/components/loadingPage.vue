@@ -1,11 +1,76 @@
 <script setup lang="ts">
+import { useAppConfigStore } from '@/stores/appStore'
+const appConfig = useAppConfigStore()
+</script>
 
+<script lang="ts">
+export default {
+  name: 'Load',
+}
 </script>
 
 <template>
-  <div>homeview</div>
+  <div class="loader">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 </template>
 
 
-<style>
+<style scoped>
+.loader {
+  position: relative;
+  width: 33px;
+  height: 33px;
+  perspective: 67px;
+}
+
+.loader div {
+  width: 100%;
+  height: 100%;
+  background: #28abce;
+  position: absolute;
+  left: 50%;
+  transform-origin: left;
+  animation: loader 2s infinite;
+  border-radius: 10px;
+}
+
+.loader div:nth-child(1) {
+  animation-delay: 0.15s;
+}
+
+.loader div:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.loader div:nth-child(3) {
+  animation-delay: 0.45s;
+}
+
+.loader div:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.loader div:nth-child(5) {
+  animation-delay: 0.75s;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  50%, 80% {
+    transform: rotateY(-180deg);
+  }
+
+  90%, 100% {
+    opacity: 0;
+    transform: rotateY(-180deg);
+  }
+}
 </style>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch, onMounted, onUnmounted } from 'vue'
+import { watch, onMounted, onUnmounted, ref } from 'vue'
 /**
  * 全局配置 ant-design
  * 
@@ -31,7 +31,7 @@ import { useRoute } from 'vue-router'
 
 // 监听系统主题变化
 const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-const handleThemeChange = (e) => {
+const handleThemeChange = (e:any) => {
   if(appConfig.activeTheme === 'contrast') {
     console.log('当前主题为自动')
     appConfig.setIsDarkMode(e.matches)
@@ -40,9 +40,14 @@ const handleThemeChange = (e) => {
   }
 }
 
+const isLoading = ref(true)
 
 onMounted(() => {
   console.log('页面渲染完成，DOM 已挂载')
+  setInterval(() => {
+    isLoading.value = false
+  }, 1000)
+  // 监听系统主题变化
   appConfig.changeThemeCss(token.value)
   mediaQuery.addEventListener('change', handleThemeChange)
 })
@@ -50,10 +55,23 @@ onMounted(() => {
 onUnmounted(() => {
   mediaQuery.removeEventListener('change', handleThemeChange)
 })
+
+
+
+
+// 组件
+import Load from '@/components/loadingPage.vue'
 </script>
 
 <template>
-  <a-config-provider :theme="themex" :locale="locale" mode="out-in">
+  <transition name="fade">
+    <div v-if="isLoading" :style="{background:appConfig.themecss.colorBgBase}" style="width: 100%;height: 100vh;display: flex;align-items: center;justify-content: center;position: fixed;z-index: 2000;">
+      <Load/>
+    </div>
+  </transition>
+  
+  
+  <a-config-provider v-show="!isLoading" :theme="themex" :locale="locale" mode="out-in">
     <router-view v-slot="{ Component }">
       <transition name="fade" :style="{color:appConfig.themecss.colorTextBase,background:appConfig.themecss.colorBgBase}">
         <component :is="Component" />
