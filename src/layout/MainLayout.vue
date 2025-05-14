@@ -1,17 +1,28 @@
 <script setup lang="ts">
 import theme from '@/components/common/theme.vue'
-import { ref, reactive } from 'vue'
+import { ref, reactive, watch } from 'vue'
+
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
 import { useAppConfigStore } from '@/stores/appStore'
 const appConfig = useAppConfigStore()
-
 
 
 const options = reactive(['全部', 'Weekly', 'Monthly', 'Quarterly', 'Yearly'])
 const value = ref(options[0])
 
-const optionsNav = reactive(['主页', '服务器', '关于'])
+const optionsNav = reactive(['主页', '更多', '关于'])
 const valueNav = ref(optionsNav[0])
+const navPath: Record<string, string> = {
+  '主页': '/',
+  '更多': '/server',
+  '关于': '/about'
+}
 
+watch(valueNav, (newValue, oldValue) => {
+  router.push(navPath[newValue])
+})
 
 import segmented from '@/components/homeView/segmented.vue'
 </script>
@@ -22,7 +33,7 @@ import segmented from '@/components/homeView/segmented.vue'
       <!-- 上部分 -->
       <div class="layout-top">
         <div style="display: flex;flex-direction: row;gap: 1.2rem;align-items: center;">
-          <div style="font-weight: bold;letter-spacing: 1px;width: calc(160px - 16px - 1.2rem);font-size: 1.2rem;">
+          <div style="font-weight: bold;letter-spacing: 1px;width: calc(160px - 16px - 1.2rem);font-size: 1.1rem;">
             Axo | MCnav
           </div>
           <div>
@@ -41,7 +52,7 @@ import segmented from '@/components/homeView/segmented.vue'
         <div class="bottom-right" :style="{ background : appConfig.themecss.colorBgContainerDisabled, borderTopLeftRadius: `${appConfig.themecss.borderRadius}px` }">
           <router-view v-slot="{ Component }">
             <transition name="fade">
-              <component :is="Component" />
+              <component :is="Component" style="max-height: calc(100vh - 64px);" />
             </transition>
           </router-view>
         </div>

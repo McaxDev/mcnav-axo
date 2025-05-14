@@ -10,7 +10,17 @@ const router = createRouter({
         {
           path: '', // 默认路由
           name: 'Home',
-          component: () => import('../views/HomeView.vue') // 示例页面
+          component: () => import('../views/MainLayout/Home.vue')
+        },
+        {
+          path: '/server', // 默认路由
+          name: 'Server',
+          component: () => import('../views/MainLayout/Server.vue')
+        },
+        {
+          path: '/about', // 默认路由
+          name: 'About',
+          component: () => import('../views/MainLayout/About.vue')
         }
       ]
     },
