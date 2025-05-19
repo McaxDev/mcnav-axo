@@ -12,12 +12,15 @@ const appConfig = useAppConfigStore()
 const options = reactive(['全部', 'Weekly', 'Monthly', 'Quarterly', 'Yearly'])
 const value = ref(options[0])
 
-const optionsNav = reactive(['主页', '更多', '关于'])
+const optionsNav = reactive(['主页', '更多', '关于', '/vip', '/consumption', '/gift'])
 const valueNav = ref(optionsNav[0])
 const navPath: Record<string, string> = {
   '主页': '/',
   '更多': '/server',
-  '关于': '/about'
+  '关于': '/about',
+  '/vip':'/vip',
+  '/consumption':'/consumption',
+  '/gift':'/gift',
 }
 
 watch(valueNav, (newValue, oldValue) => {
